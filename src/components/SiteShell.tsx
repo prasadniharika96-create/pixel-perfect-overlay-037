@@ -68,6 +68,11 @@ export function PageHeader({ title, subtitle }: { title: string; subtitle: strin
   );
 }
 
+// The locale is pinned: the server's default and each visitor's browser default
+// differ, and a date that renders differently on the two sides makes React throw
+// the page away.
 export function fmt(dt: string) {
-  return new Date(dt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+  const d = new Date(dt);
+  if (Number.isNaN(d.getTime())) return dt;
+  return d.toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
 }
