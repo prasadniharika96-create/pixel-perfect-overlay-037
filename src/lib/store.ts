@@ -10,11 +10,11 @@ export interface Donation {
   preparedAt: string;
   deadline: string;
   location: string;
-  description?: string;
+  description?: string | undefined;
   donorName: string;
   status: Status;
-  claimedBy?: string;
-  volunteer?: string;
+  claimedBy?: string | undefined;
+  volunteer?: string | undefined;
   createdAt: number;
 }
 
