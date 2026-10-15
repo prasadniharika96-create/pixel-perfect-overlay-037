@@ -13,7 +13,9 @@ describe("Demo donation data", () => {
     .slice(0, 10);
 
   it("puts the first donation's deadline on the hour it was written for", () => {
-    expect(demoDonations[0].deadline).toBe(`${utcDay}T14:00`);
+    const biryani = demoDonations.find((d) => d.id === "d1");
+    expect(biryani).toBeDefined();
+    expect(biryani?.deadline).toBe(`${utcDay}T14:00`);
   });
 
   it("keeps every time on the same UTC day", () => {
