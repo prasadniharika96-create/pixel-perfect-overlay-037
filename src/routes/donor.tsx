@@ -36,7 +36,7 @@ function Donor() {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const g = (k: string) => String(f.get(k) ?? "").trim();
-    if (new Date(g("deadline")) <= new Date()) return toast.error("Collection deadline must be in the future");
+    if (new Date(g("deadline")) <= new Date()) { toast.error("Collection deadline must be in the future"); return; }
     addDonation({
       donorName: g("donorName"), foodName: g("foodName"), quantity: g("quantity"), category: g("category"),
       preparedAt: g("preparedAt"), deadline: g("deadline"), location: g("location"), description: g("description") || undefined,
